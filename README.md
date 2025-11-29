@@ -28,7 +28,7 @@ Ingest streaming data from Event Hubs.
 Save raw JSON payloads to ADLS.
 
 - Silver Layer (Cleansed):
-Filter out GPS errors (future dates/stale data) and null coordinates.
+Filter out GPS errors (future dates/stale data), null coordinates and duplicates.
 Convert data types (Timestamp, Double).
 
 - Gold Layer (Aggregated):
