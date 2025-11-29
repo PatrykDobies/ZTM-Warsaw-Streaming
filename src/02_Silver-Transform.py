@@ -58,6 +58,7 @@ silver_df = raw_bronze_df \
         (col("signal_timestamp") >= date_sub(current_date(), 3)) & 
         (col("signal_timestamp") <= current_timestamp())
     )
+    .dropDuplicates(["vehicle_id", "signal_timestamp"])
 
 # Stream to silver layer
 print("Starting Silver Stream (Batch Mode)...")
