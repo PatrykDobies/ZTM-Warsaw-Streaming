@@ -57,7 +57,7 @@ silver_df = raw_bronze_df \
     .filter(
         (col("signal_timestamp") >= date_sub(current_date(), 3)) & 
         (col("signal_timestamp") <= current_timestamp())
-    )
+    ) \
     .dropDuplicates(["vehicle_id", "signal_timestamp"])
 
 # Stream to silver layer
@@ -74,6 +74,3 @@ silver_stream = silver_df.writeStream \
 silver_stream.awaitTermination()
 
 print(f"Silver Batch processing completed.")
-
-# COMMAND ----------
-
