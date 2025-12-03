@@ -12,9 +12,9 @@ Real-time vehicle positions (Buses & Trams).
 
 ## Project Description
 
-This project demonstrates a scalable streaming pipeline built on Azure Cloud. It ingests live GPS data, processes it using Spark Structured Streaming, and visualizes in Power BI.
+This project demonstrates a scalable streaming pipeline built on Azure Cloud. It ingests live GPS data, processes it using Spark Structured Streaming, visualizes in Power BI and creates ML model.
 
-It consists of three main stages:
+It consists of four main stages:
 
 1. **Ingestion (Apache NiFi & Azure Event Hubs)**
 Apache NiFi: Cyclically fetches data from the ZTM API and splits JSON arrays into individual events.
@@ -35,7 +35,7 @@ Convert data types (Timestamp, Double).
 Operational-Stats: Aggregates buses usage per line and hour (Max active vehicles).
 GeoHash: Spatial aggregation using Grid/GeoHash logic to map line density.
 
-3. Data Visualization (Power BI)
+3. **Data Visualization (Power BI)**
 Interactive dashboard connected to Databricks Tables.
 
 Dynamic Time-Lapse: Animation showing bus line density over 24 hours.
@@ -49,6 +49,14 @@ Fleet Analysis: Bar chart and line graph showing busiest lines and count of vehi
 
 <img width="1423" height="795" alt="active-vehicle-count" src="https://github.com/user-attachments/assets/4c7c3386-2196-46f6-bac8-665aea144de4" />
 
+
+
+
+5. **Machine Learning module**
+Machine Learning module to forecast traffic density (bus density).
+Proof of Concept (PoC) - It was trained on a 24-hour sample dataset.
+
+<img width="1914" height="841" alt="ml" src="https://github.com/user-attachments/assets/dc231847-f80d-43d7-a365-0f90fb7b86ca" />
 
 
 
