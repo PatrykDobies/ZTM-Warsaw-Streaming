@@ -53,7 +53,7 @@ Output: Cleaned Delta tables in ztm/silver/
 
 Action: Parses JSON schema, filters out GPS errors (future dates), converts types.
 
-## 6. Run Aggregation Jobs (Gold Layer)
+## 5. Run Aggregation Jobs (Gold Layer)
 Notebooks: src/03_Gold-Operational-Stats.py & src/04_Gold-GeoHash.py & 05_Gold-tables.py
 
 Aggregations:
@@ -64,7 +64,7 @@ GeoHash → Lines density on a 100m grid (GeoHash logic).
 
 tables → registered Tables in Hive Metastore for Power BI consumption.
 
-7. Visualize Data (Power BI)
+## 6. Visualize Data (Power BI)
 File: powerbi/ztm_warsaw.pbix
 
 - Open Power BI Desktop.
@@ -74,3 +74,19 @@ File: powerbi/ztm_warsaw.pbix
 - Interact with the dashboard:
   Use the "Play Axis" to animate buses flow over 24 hours.
   Filter fleet statistics by specific bus lines.
+
+## 7. Run Machine Learning Pipeline (MLOps)
+Notebook: src/06_ML_training.py
+
+Goal: Predict traffic density (bus density) based on geolocation (Grid) and time of day.
+
+Input: Gold Layer table (spatial_heatmap).
+
+Tech Stack: Spark MLlib (Random Forest Regressor) & MLflow.
+
+Action:
+- Feature Engineering: Vectorizes spatial (grid_lat, grid_lon) and temporal (hour) features.
+- Training: Trains a regression model using K-Fold Cross-Validation to tune hyperparameters.
+- Tracking: Logs experiments, performance metrics (RMSE, R2), and model artifacts to Databricks MLflow.
+- Inference: Generates predictions for specific city zones.
+- Verification: Go to the "Experiments" tab in Databricks to view the logged runs, metrics, and the saved model.
