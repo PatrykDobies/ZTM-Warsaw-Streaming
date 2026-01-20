@@ -35,6 +35,14 @@ Convert data types (Timestamp, Double).
 Operational-Stats: Aggregates buses usage per line and hour (Max active vehicles).
 GeoHash: Spatial aggregation using Grid/GeoHash logic to map line density.
 
+**Orchestration:**
+
+The entire pipeline is orchestrated using Databricks Lakeflow Jobs to manage task dependencies and parallel execution. Instead of running notebooks manually, the process follows a Directed Acyclic Graph (DAG) structure:
+
+<img width="1161" height="391" alt="pipeline" src="https://github.com/user-attachments/assets/4f4c1ce7-def3-46c4-b073-724711dc18ce" />
+
+
+
 3. **Data Visualization (Power BI)**
 Interactive dashboard connected to Databricks Tables.
 
@@ -52,7 +60,7 @@ Fleet Analysis: Bar chart and line graph showing busiest lines and count of vehi
 
 
 
-5. **Machine Learning module**
+4. **Machine Learning module**
 Machine Learning module to forecast traffic density (bus density).
 Proof of Concept (PoC) - It was trained on a 24-hour sample dataset.
 
