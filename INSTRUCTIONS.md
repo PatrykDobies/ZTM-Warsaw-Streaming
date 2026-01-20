@@ -75,7 +75,7 @@ Navigate to Jobs & Pipelines -> Create Job.
 
 - Bronze Task: Select 01_Bronze-Batch-Process.
 - Silver Task: Select 02_Silver-Transform. Dependends on: Bronze.
-- Parallel Tasks: Create the following tasks and set Dependends ony: Silver for all of them:
+- Parallel Tasks: Create the following tasks and set Dependends on: Silver for all of them:
   * 03_Gold-Operational-Stats
   * 04_Gold-GeoHash
 - Gold-Tables Task: Select 05_Gold_tables. Dependends on: Gold-Geo & Gold-Stats.
