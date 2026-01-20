@@ -64,7 +64,24 @@ GeoHash → Lines density on a 100m grid (GeoHash logic).
 
 tables → registered Tables in Hive Metastore for Power BI consumption.
 
-## 6. Visualize Data (Power BI)
+## 6. Orchestration
+Instead of running notebooks manually one by one, use Databricks Lakeflow Jobs to orchestrate the entire pipeline with proper dependency management.
+
+Configuration: You can recreate the workflow manually or refer to the configuration file provided in the repository (config/ztm_pipeline.json).
+
+Steps to build the DAG (Directed Acyclic Graph):
+
+Navigate to Jobs & Pipelines -> Create Job.
+
+- Bronze Task: Select 01_Bronze-Batch-Process.
+- Silver Task: Select 02_Silver-Transform. Dependends on: Bronze.
+- Parallel Tasks: Create the following tasks and set Dependends ony: Silver for all of them:
+  * 03_Gold-Operational-Stats
+  * 04_Gold-GeoHash
+- Gold-Tables Task: Select 05_Gold_tables. Dependends on: Gold-Geo & Gold-Stats.
+- ML-Training Taks: Select 06_ML_training. Dependends on: Gold-Geo.
+
+## 7. Visualize Data (Power BI)
 File: powerbi/ztm_warsaw.pbix
 
 - Open Power BI Desktop.
@@ -75,7 +92,7 @@ File: powerbi/ztm_warsaw.pbix
   Use the "Play Axis" to animate buses flow over 24 hours.
   Filter fleet statistics by specific bus lines.
 
-## 7. Run Machine Learning Pipeline (MLOps)
+## 8. Run Machine Learning Pipeline (MLOps)
 Notebook: src/06_ML_training.py
 
 Goal: Predict traffic density (bus density) based on geolocation (Grid) and time of day.
