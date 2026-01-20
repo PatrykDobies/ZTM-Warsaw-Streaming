@@ -39,7 +39,8 @@ GeoHash: Spatial aggregation using Grid/GeoHash logic to map line density.
 
 The entire pipeline is orchestrated using Databricks Lakeflow Jobs to manage task dependencies and parallel execution. Instead of running notebooks manually, the process follows a Directed Acyclic Graph (DAG) structure:
 
-<img width="1161" height="391" alt="pipeline" src="https://github.com/user-attachments/assets/4f4c1ce7-def3-46c4-b073-724711dc18ce" />
+<img width="1163" height="406" alt="pipeline" src="https://github.com/user-attachments/assets/23fe46ed-ae5d-4967-8b11-9ad5265f1dd0" />
+
 
 
 
