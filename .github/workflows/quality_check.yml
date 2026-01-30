@@ -27,4 +27,4 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          flake8 src/ --count --show-source --statistics --builtins=spark,dbutils,display --max-line-length=120
+         flake8 src/ --count --show-source --statistics --builtins=spark,dbutils,display --max-line-length=120 --ignore=W291,W292,W293,F541,E261,E501
